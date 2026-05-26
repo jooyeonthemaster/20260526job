@@ -1,0 +1,112 @@
+[
+  {
+    "index": 0,
+    "current": "00",
+    "total": "09",
+    "percent": "10%",
+    "chapter": "Opening",
+    "title": "가독성 있는 자기소개서 작성법",
+    "subtitle": "한 줄의 경험이 합격을 만드는 문장으로 바뀌는 순간",
+    "surfaceClass": "slide-surface slide-surface--intro",
+    "screenshot": "C:\\Users\\jooye\\Desktop\\2026project\\kihong2\\artifacts\\professor-guide\\screenshots\\slide-01-00.png"
+  },
+  {
+    "index": 1,
+    "current": "01",
+    "total": "09",
+    "percent": "20%",
+    "chapter": "Instructor",
+    "title": "강사 프로필",
+    "subtitle": "링크드코리아 김기홍 대표 · 창업교육 13년 · 중앙대 겸임교수 · 액셀러레이터 투자심사역",
+    "surfaceClass": "slide-surface slide-surface--profile",
+    "screenshot": "C:\\Users\\jooye\\Desktop\\2026project\\kihong2\\artifacts\\professor-guide\\screenshots\\slide-02-01.png"
+  },
+  {
+    "index": 2,
+    "current": "02",
+    "total": "09",
+    "percent": "30%",
+    "chapter": "Why now",
+    "title": "영혼 없는 자소서, 이제 그만",
+    "subtitle": "묻지마 지원서를 가려내는 시대. 합격은 인성·태도 + 직무역량의 의도된 문장에서 만들어집니다.",
+    "surfaceClass": "slide-surface slide-surface--why",
+    "screenshot": "C:\\Users\\jooye\\Desktop\\2026project\\kihong2\\artifacts\\professor-guide\\screenshots\\slide-03-02.png"
+  },
+  {
+    "index": 3,
+    "current": "03",
+    "total": "09",
+    "percent": "40%",
+    "chapter": "Framework",
+    "title": "5개 카테고리 항목 지도",
+    "subtitle": "성장과정 / 성격의 장단점 / 직무 지원동기 / 보유 직무역량 / 입사 후 포부 — 회사 양식에 맞춰 선택하고 인성·태도 + 역량을 분리합니다.",
+    "surfaceClass": "slide-surface slide-surface--map",
+    "screenshot": "C:\\Users\\jooye\\Desktop\\2026project\\kihong2\\artifacts\\professor-guide\\screenshots\\slide-04-03.png"
+  },
+  {
+    "index": 4,
+    "current": "04",
+    "total": "09",
+    "percent": "50%",
+    "chapter": "Writing",
+    "title": "나쁜 글의 11가지 / 좋은 문장 6원칙",
+    "subtitle": "접속어 남용·피동형·번역투를 걷어내고 한 문장 한 생각의 원칙을 적용합니다.",
+    "surfaceClass": "slide-surface slide-surface--writing",
+    "screenshot": "C:\\Users\\jooye\\Desktop\\2026project\\kihong2\\artifacts\\professor-guide\\screenshots\\slide-05-04.png"
+  },
+  {
+    "index": 5,
+    "current": "05",
+    "total": "09",
+    "percent": "60%",
+    "chapter": "[실습] Profile",
+    "title": "학생 프로필 입력",
+    "subtitle": "지원 직무·기업·교육 과정·프로젝트 등 자기소개서의 사실 정보를 채웁니다.",
+    "surfaceClass": "slide-surface slide-surface--profile-input",
+    "screenshot": "C:\\Users\\jooye\\Desktop\\2026project\\kihong2\\artifacts\\professor-guide\\screenshots\\slide-06-05.png"
+  },
+  {
+    "index": 6,
+    "current": "06",
+    "total": "09",
+    "percent": "70%",
+    "chapter": "[실습] STAR",
+    "title": "스토리(경험) 입력 — STAR",
+    "subtitle": "상황 · 과제 · 행동 · 결과 + 배운 점 + 정량 성과. 자기소개서의 모든 항목은 이 경험에서 출발합니다.",
+    "surfaceClass": "slide-surface slide-surface--story",
+    "screenshot": "C:\\Users\\jooye\\Desktop\\2026project\\kihong2\\artifacts\\professor-guide\\screenshots\\slide-07-06.png"
+  },
+  {
+    "index": 7,
+    "current": "07",
+    "total": "09",
+    "percent": "80%",
+    "chapter": "AI Studio",
+    "title": "AI가 5개 항목을 한 번에 완성합니다",
+    "subtitle": "강의 원칙 · STAR 구조 · NCS 관점이 결합된 프롬프트로 초안을 생성합니다.",
+    "surfaceClass": "slide-surface slide-surface--generator",
+    "screenshot": "C:\\Users\\jooye\\Desktop\\2026project\\kihong2\\artifacts\\professor-guide\\screenshots\\slide-08-07.png"
+  },
+  {
+    "index": 8,
+    "current": "08",
+    "total": "09",
+    "percent": "90%",
+    "chapter": "Review",
+    "title": "섹션 첨삭 & 재작성",
+    "subtitle": "AI 초안을 그대로 두지 않습니다. 항목별 재호출 + 본문 직접 편집 + 검수 포인트.",
+    "surfaceClass": "slide-surface slide-surface--review",
+    "screenshot": "C:\\Users\\jooye\\Desktop\\2026project\\kihong2\\artifacts\\professor-guide\\screenshots\\slide-09-08.png"
+  },
+  {
+    "index": 9,
+    "current": "09",
+    "total": "09",
+    "percent": "100%",
+    "chapter": "Export",
+    "title": "DOCX 실무 산출",
+    "subtitle": "학원 양식 흐름에 맞춰 Word 문서로 내려받습니다. 즉시 편집·제출 가능한 형태.",
+    "surfaceClass": "slide-surface slide-surface--export",
+    "screenshot": "C:\\Users\\jooye\\Desktop\\2026project\\kihong2\\artifacts\\professor-guide\\screenshots\\slide-10-09.png"
+  }
+]

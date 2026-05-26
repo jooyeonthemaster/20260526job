@@ -393,6 +393,41 @@ export function LectureStudio() {
 
   const clearCoach = () => setCoachReport(null);
 
+  const downloadHwpx = async () => {
+    setBusy("hwpx");
+    setError("");
+    setStatus("HWPX(한컴) 문서 생성 중");
+
+    try {
+      const response = await fetch("/api/hwpx", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data?.detail || data?.error || "HWPX 생성 실패");
+      }
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `${profile.name || "학생"}_AI자기소개서.hwpx`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.URL.revokeObjectURL(url);
+      setStatus("HWPX 다운로드 완료");
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+      setStatus("HWPX 생성 오류");
+    } finally {
+      setBusy(null);
+    }
+  };
+
   const downloadDocx = async () => {
     setBusy("docx");
     setError("");
@@ -563,8 +598,18 @@ export function LectureStudio() {
           <span className="topbar-chapter">{slide.chapter}</span>
           <button
             className="icon-command"
+            onClick={downloadHwpx}
+            disabled={busy === "hwpx"}
+            title="한글 워드프로세서(.hwpx) 파일로 다운로드"
+          >
+            <Download size={13} strokeWidth={2.2} />
+            <span>{busy === "hwpx" ? "생성 중" : "HWPX"}</span>
+          </button>
+          <button
+            className="icon-command"
             onClick={downloadDocx}
             disabled={busy === "docx"}
+            title="MS Word(.docx) 파일로 다운로드"
           >
             <Download size={13} strokeWidth={2.2} />
             <span>{busy === "docx" ? "생성 중" : "DOCX"}</span>

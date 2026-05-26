@@ -1,6 +1,6 @@
 import type { SectionKey, StudentProfile, StoryInput } from "@/lib/types";
 
-export type BusyState = null | "draft" | "polish" | "docx" | SectionKey;
+export type BusyState = null | "draft" | "polish" | "docx" | "hwpx" | SectionKey;
 
 export type CoachReport = {
   context: string;
