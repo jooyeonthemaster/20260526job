@@ -131,8 +131,7 @@ export function ExportSlide({
                 )}
                 <p className="xpaper__sec-body">
                   {sec.body
-                    ? sec.body.slice(0, 260) +
-                      (sec.body.length > 260 ? " …" : "")
+                    ? sec.body
                     : "AI 생성 또는 직접 작성한 내용이 여기에 미리 보입니다."}
                 </p>
               </article>

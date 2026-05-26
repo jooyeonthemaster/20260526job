@@ -258,6 +258,7 @@
   color: #fafafa;
   position: relative;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .xform__hero::before {
@@ -358,6 +359,7 @@
   background: #fafafa;
   border: 1px solid rgba(15, 15, 22, 0.1);
   border-radius: 6px;
+  flex-shrink: 0;
 }
 
 .xform__cta {
@@ -522,6 +524,7 @@
   background: #fafafa;
   border: 1px solid rgba(15, 15, 22, 0.1);
   border-radius: 6px;
+  flex-shrink: 0;
 }
 
 .xform__quality-score {
@@ -597,6 +600,7 @@
   background: #fafafa;
   border: 1px solid rgba(15, 15, 22, 0.1);
   border-radius: 6px;
+  flex-shrink: 0;
 }
 
 .xform__checks ul {
