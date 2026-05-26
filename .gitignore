@@ -1,0 +1,22 @@
+.next/
+node_modules/
+out/
+dist/
+coverage/
+.env*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+verification-*.png
+*.tsbuildinfo
+
+# dev artifacts
+.playwright/
+.playwright-mcp/
+.vercel/
+slide-*.png
+tmp-*.png
+v2-*.png
+v3-*.png

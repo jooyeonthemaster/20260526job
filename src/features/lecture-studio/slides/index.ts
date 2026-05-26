@@ -1,0 +1,16 @@
+export { IntroSlide } from "./intro-slide";
+export { InstructorSlide } from "./instructor-slide";
+export { WhySlide } from "./why-slide";
+export { MapSlide } from "./map-slide";
+export { ProcessSlide } from "./process-slide";
+export { TalentSlide } from "./talent-slide";
+export { WritingSlide } from "./writing-slide";
+export { FormRulesSlide } from "./form-rules-slide";
+export { ProfileInputSlide } from "./profile-input-slide";
+export { StorySlide } from "./story-slide";
+export { KeywordSlide } from "./keyword-slide";
+export { DiamondSlide } from "./diamond-slide";
+export { PlannerSlide } from "./planner-slide";
+export { GeneratorSlide } from "./generator-slide";
+export { ReviewSlide } from "./review-slide";
+export { ExportSlide } from "./export-slide";

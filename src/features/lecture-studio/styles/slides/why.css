@@ -1,0 +1,354 @@
+/* ============================================================
+   Slide 02 — Section divider · Premium Glass Speech Bubble
+   Frosted glass · gradient hairline · multi-layer shadow ·
+   SVG tapered tail · pulse indicator · animated arrow
+   ============================================================ */
+
+.slide-surface--why {
+  padding: 0 !important;
+  grid-template-rows: 1fr !important;
+  background: transparent;
+}
+
+.slide-surface--why .slide-head {
+  display: none;
+}
+
+.slide-surface--why .slide-body {
+  padding: 0;
+  overflow: hidden;
+}
+
+/* ---------- Stage ---------- */
+.why-section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 0 0 clamp(40px, 6vw, 132px);
+  isolation: isolate;
+}
+
+/* ============================================================
+   THE BUBBLE
+   ============================================================ */
+.why-bubble {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(18px, 1.6vw, 28px);
+  width: clamp(420px, 44vw, 640px);
+  padding: clamp(30px, 2.6vw, 44px) clamp(36px, 3vw, 52px);
+  border-radius: 8px;
+  background:
+    linear-gradient(
+      155deg,
+      rgba(255, 255, 255, 0.92) 0%,
+      rgba(255, 255, 255, 0.82) 40%,
+      rgba(248, 248, 250, 0.86) 100%
+    );
+  backdrop-filter: blur(32px) saturate(180%);
+  -webkit-backdrop-filter: blur(32px) saturate(180%);
+  box-shadow:
+    /* Glossy top inset highlight */
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 -1px 0 rgba(15, 15, 22, 0.04) inset,
+    /* Close contact shadow */
+    0 2px 6px -2px rgba(15, 15, 22, 0.1),
+    /* Medium ambient */
+    0 12px 28px -10px rgba(15, 15, 22, 0.18),
+    /* Far soft shadow */
+    0 38px 72px -30px rgba(15, 15, 22, 0.34);
+  /* Entrance animation */
+  animation: bubbleEnter 920ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--fx-delay, 0ms);
+  will-change: transform, opacity, filter;
+}
+
+@keyframes bubbleEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+    filter: blur(8px);
+  }
+  60% {
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Gradient hairline border via pseudo */
+.why-bubble::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    150deg,
+    rgba(15, 15, 22, 0.22) 0%,
+    rgba(15, 15, 22, 0.04) 35%,
+    rgba(15, 15, 22, 0.02) 65%,
+    rgba(15, 15, 22, 0.18) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Subtle inner sheen */
+.why-bubble::after {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  right: 1px;
+  height: 40%;
+  border-radius: 7px 7px 0 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+}
+
+/* ---------- Head strip ---------- */
+.why-bubble__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: rgba(15, 15, 22, 0.62);
+}
+
+.why-bubble__live {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.why-bubble__pulse {
+  position: relative;
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #0a0a12;
+  flex-shrink: 0;
+}
+
+.why-bubble__pulse::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  background: rgba(10, 10, 18, 0.4);
+  animation: pulseRing 1900ms ease-out infinite;
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.55);
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+.why-bubble__counter {
+  color: rgba(15, 15, 22, 0.42);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+}
+
+/* ---------- Divider ---------- */
+.why-bubble__divider {
+  display: block;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(15, 15, 22, 0) 0%,
+    rgba(15, 15, 22, 0.18) 12%,
+    rgba(15, 15, 22, 0.06) 70%,
+    rgba(15, 15, 22, 0) 100%
+  );
+}
+
+/* ---------- Body ---------- */
+.why-bubble__body {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 1.2vw, 20px);
+  position: relative;
+  z-index: 1;
+}
+
+.why-bubble__lead {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: clamp(16px, 1.3vw, 21px);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  color: rgba(15, 15, 22, 0.66);
+  word-break: keep-all;
+}
+
+.why-bubble__headline {
+  margin: 0;
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(36px, 4.3vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: #0a0a12;
+  word-break: keep-all;
+}
+
+.why-bubble__headline em {
+  font-style: italic;
+}
+
+/* ---------- Footer ---------- */
+.why-bubble__foot {
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 1vw, 16px);
+  margin-top: clamp(4px, 0.4vw, 8px);
+  position: relative;
+  z-index: 1;
+}
+
+.why-bubble__rule {
+  display: block;
+  flex-shrink: 0;
+  width: clamp(28px, 3vw, 42px);
+  height: 1px;
+  background: rgba(15, 15, 22, 0.42);
+}
+
+.why-bubble__byline {
+  font-family: var(--sans);
+  font-size: clamp(12px, 0.92vw, 14px);
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(15, 15, 22, 0.62);
+  white-space: nowrap;
+}
+
+.why-bubble__arrow {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 14px;
+  color: rgba(15, 15, 22, 0.6);
+}
+
+.why-bubble__arrow svg {
+  width: 100%;
+  height: 100%;
+  animation: arrowSlide 2200ms ease-in-out infinite;
+}
+
+@keyframes arrowSlide {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+}
+
+/* ============================================================
+   DYNAMIC CONNECTOR — Speech bubble glass tail & flowing dots
+   ============================================================ */
+.why-bubble__connector-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 4;
+  overflow: visible;
+  animation: connectorFadeIn 920ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes connectorFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes tailReveal {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+.why-bubble__dynamic-dots {
+  animation: dynamicDotsFlow 2200ms linear infinite;
+}
+
+@keyframes dynamicDotsFlow {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -25;
+  }
+}
+
+/* ============================================================
+   Passthrough — bubble interactive, rest passes to robot
+   ============================================================ */
+.deck-layout--passthrough .why-section {
+  pointer-events: none;
+}
+
+.deck-layout--passthrough .why-bubble {
+  pointer-events: auto;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px) {
+  .why-section {
+    padding-left: clamp(20px, 4vw, 60px);
+  }
+  .why-bubble {
+    width: clamp(360px, 52vw, 540px);
+  }
+}

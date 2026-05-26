@@ -1,0 +1,342 @@
+/* Responsive overrides preserved after all page styles. */
+@media (max-width: 1280px) {
+  .deck-layout {
+    padding: 88px 64px 70px;
+  }
+  .slide-surface {
+    padding: 32px 42px 26px;
+  }
+  .slide-head h2 {
+    font-size: clamp(24px, 2.6vw, 36px);
+  }
+}
+
+@media (max-width: 960px) {
+  .deck-layout {
+    padding: 84px 24px 70px;
+  }
+  .slide-surface {
+    padding: 24px 24px 18px;
+  }
+  .side-nav.left { left: 6px; }
+  .side-nav.right { right: 6px; }
+}
+
+/* ===== QA pass overrides ===== */
+.why-layout {
+  min-height: 0;
+}
+
+.why-headline,
+.why-compare {
+  height: 100%;
+  min-height: 0;
+}
+
+.why-bullets {
+  grid-template-rows: repeat(3, 1fr);
+  flex: 1;
+  min-height: 0;
+}
+
+.why-bullet,
+.compare-card {
+  min-height: 0;
+}
+
+.compare-row {
+  flex: 1;
+  min-height: 0;
+}
+
+.category-card .category-number,
+.category-card h3,
+.category-card .target,
+.category-card .category-body {
+  position: relative;
+  z-index: 1;
+}
+
+.category-card .formula-mini {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 4px;
+  margin-top: auto;
+  font-size: 10.8px;
+}
+
+.category-card .formula-mini span {
+  display: inline-flex;
+  padding: 4px 7px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent, var(--indigo)) 9%, white);
+  color: color-mix(in srgb, var(--accent, var(--indigo)) 82%, black);
+  border: 1px solid color-mix(in srgb, var(--accent, var(--indigo)) 18%, transparent);
+  line-height: 1.2;
+}
+
+.category-card .formula-mini span::before {
+  content: none;
+}
+
+.talent-layout {
+  gap: 10px;
+}
+
+.talent-card {
+  gap: 6px;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.talent-head h4 {
+  font-size: 15px;
+}
+
+.talent-section {
+  padding: 6px 8px;
+}
+
+.talent-section strong {
+  font-size: 12px;
+}
+
+.talent-proof {
+  display: -webkit-box;
+  min-height: 34px;
+  padding: 7px 8px;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-size: 12px;
+}
+
+.talent-keywords {
+  gap: 3px;
+}
+
+.talent-keywords span {
+  padding: 3px 7px;
+  font-size: 10.8px;
+}
+
+.talent-keywords span:nth-child(n+5) {
+  display: none;
+}
+
+.talent-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  padding: 64px 24px 24px;
+  background: rgba(248, 250, 252, 0.72);
+}
+
+.modal-close {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.modal-coach-row {
+  align-items: stretch;
+}
+
+.modal-coach-row .coach-result {
+  margin-top: 0;
+}
+
+.writing-layout {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: minmax(0, 1fr) 270px;
+}
+
+.writing-panel {
+  overflow-y: auto;
+}
+
+.writing-panel header {
+  padding-bottom: 5px;
+}
+
+.writing-list li {
+  padding: 4px 7px;
+  font-size: 11.2px;
+  line-height: 1.28;
+}
+
+.writing-list.single-col li {
+  padding: 6px 9px;
+  font-size: 12.5px;
+}
+
+.writing-list li em {
+  margin-top: 0;
+  font-size: 9.5px;
+  line-height: 1.2;
+}
+
+.writing-lab {
+  grid-template-columns: 0.72fr 1.26fr 0.82fr 1.16fr;
+  overflow: hidden;
+}
+
+.writing-lab > *,
+.rewrite-stage,
+.rewrite-copy,
+.diagnostic-card,
+.sentence-coach {
+  min-height: 0;
+}
+
+.lab-card {
+  min-height: 0;
+  padding: 7px 9px;
+}
+
+.lab-card .lab-label {
+  margin-bottom: 0;
+  font-size: 10.5px;
+  line-height: 1.25;
+}
+
+.rewrite-copy p {
+  font-size: 13.8px;
+}
+
+.rewrite-stage,
+.rewrite-copy,
+.diagnostic-card {
+  overflow: auto;
+}
+
+.sentence-coach {
+  gap: 8px;
+  overflow: hidden;
+}
+
+.sentence-coach .coach-textarea {
+  min-height: 58px;
+}
+
+.sentence-coach .coach-result {
+  flex: 1;
+  min-height: 0;
+  max-height: 76px;
+}
+
+.ghost-action {
+  width: 100%;
+  padding: 7px 10px;
+  border-radius: 11px;
+  background: rgba(15, 15, 22, 0.08);
+  color: var(--indigo);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+@media (max-width: 960px) {
+  body {
+    overflow: auto;
+  }
+
+  .studio-shell {
+    height: auto;
+    min-height: 100svh;
+    overflow: visible;
+  }
+
+  .topbar {
+    position: sticky;
+    top: 10px;
+  }
+
+  .deck-layout {
+    height: auto;
+    min-height: 100svh;
+    overflow: visible;
+    padding: 72px 18px 84px;
+  }
+
+  .slide-frame {
+    height: auto;
+  }
+
+  .slide-surface {
+    position: relative;
+    min-height: 100svh;
+    overflow: visible;
+    padding: 18px 14px 84px;
+  }
+
+  .slide-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .slide-body {
+    overflow: visible;
+  }
+
+  .slide-body > * {
+    height: auto;
+  }
+
+  .instructor-layout,
+  .why-layout,
+  .category-detail-panel,
+  .detail-columns,
+  .talent-modal,
+  .writing-layout,
+  .writing-lab {
+    grid-template-columns: 1fr;
+  }
+
+  .map-interactive {
+    grid-template-rows: none;
+    height: auto;
+  }
+
+  .map-layout,
+  .talent-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    height: auto;
+  }
+
+  .career-strip .bullet-list,
+  .philosophy-stack,
+  .proof-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .talent-modal > .coach-textarea,
+  .modal-coach-row {
+    grid-column: auto;
+  }
+
+  .modal-coach-row {
+    grid-template-columns: 1fr;
+  }
+
+  .writing-panel,
+  .writing-lab {
+    min-height: 260px;
+  }
+
+  .side-nav,
+  .slide-dots {
+    z-index: 120;
+  }
+
+  .slide-dots {
+    top: 54px;
+    bottom: auto;
+    max-width: calc(100vw - 24px);
+    overflow-x: auto;
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+    pointer-events: auto;
+  }
+}

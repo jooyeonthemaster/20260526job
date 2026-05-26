@@ -1,0 +1,10 @@
+/* Small utility classes. */
+.flex-row { display: flex; align-items: center; gap: 8px; }
+.flex-col { display: flex; flex-direction: column; gap: 8px; }
+.text-muted { color: var(--mute); }
+.text-small { font-size: 11px; }
+.text-display { font-family: var(--display); }
+.text-mono { font-family: var(--mono); }
+.hidden { display: none; }
+
+/* Responsive — keep slide ratio but adapt */

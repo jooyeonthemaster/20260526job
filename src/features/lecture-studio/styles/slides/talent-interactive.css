@@ -1,0 +1,134 @@
+/* Talent modal and interaction design. */
+.talent-slide {
+  position: relative;
+}
+
+.talent-layout {
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  height: 100%;
+}
+
+.talent-card {
+  min-height: 0;
+  padding: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.talent-card:focus-visible,
+.category-card:focus-visible,
+.lab-card:focus-visible,
+.modal-close:focus-visible,
+.coach-action:focus-visible {
+  outline: 3px solid rgba(15, 15, 22, 0.42);
+  outline-offset: 2px;
+}
+
+.talent-head h4 {
+  font-size: 15.5px;
+}
+
+.talent-head small {
+  font-size: 11.5px;
+}
+
+.talent-proof {
+  padding: 8px;
+  font-size: 12.4px;
+}
+
+.talent-keywords span {
+  padding: 4px 7px;
+  font-size: 11.3px;
+}
+
+.talent-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(248, 250, 252, 0.62);
+  backdrop-filter: blur(16px);
+}
+
+.talent-modal {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto auto;
+  gap: 14px;
+  width: min(980px, 92%);
+  max-height: 96%;
+  padding: 18px;
+  overflow: auto;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid color-mix(in srgb, var(--accent) 24%, white);
+  box-shadow: 0 34px 80px -40px rgba(15, 23, 42, 0.42);
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.08);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.modal-copy {
+  padding-right: 58px;
+}
+
+.modal-copy h3 {
+  margin: 0;
+  font-size: 30px;
+  color: var(--ink);
+}
+
+.modal-copy p {
+  margin: 6px 0 10px;
+  font-size: 15px;
+  line-height: 1.52;
+  color: var(--slate);
+}
+
+.modal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.modal-grid > div,
+.sentence-coach,
+.diagnostic-card {
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.82);
+}
+
+.modal-grid p {
+  margin: 0;
+  font-size: 13.2px;
+  line-height: 1.48;
+  color: var(--ink-soft);
+  word-break: keep-all;
+}
+
+.talent-modal > .coach-textarea,
+.modal-coach-row {
+  grid-column: 1 / -1;
+}
+
+.modal-coach-row {
+  display: grid;
+  grid-template-columns: 0.4fr 1fr;
+  gap: 10px;
+}

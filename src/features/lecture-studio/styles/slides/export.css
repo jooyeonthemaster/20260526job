@@ -1,0 +1,200 @@
+/* Export slide design. */
+.export-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 20px;
+  height: 100%;
+}
+
+.final-doc {
+  position: relative;
+  padding: 30px;
+  border-radius: 22px;
+  background: white;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 30px 60px -28px rgba(63, 64, 138, 0.4);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.final-doc h2 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 36px;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0;
+  color: var(--ink);
+}
+
+.final-doc .subject {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--mute);
+}
+
+.paper-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.03);
+  border-left: 3px solid var(--accent, var(--indigo));
+}
+
+.paper-section .head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.paper-section .head strong {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.paper-section .head .target {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--mute);
+}
+
+.paper-section .title {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--indigo);
+}
+
+.paper-section .body {
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: var(--slate);
+  word-break: keep-all;
+  white-space: pre-wrap;
+}
+
+.paper-section.empty .body {
+  color: var(--mute);
+  font-style: italic;
+}
+
+.export-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.export-ready {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #0f172a, #4c1d95);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.export-ready::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  right: -10%;
+  width: 60%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(15, 15, 22, 0.4), transparent 70%);
+  filter: blur(20px);
+}
+
+.export-ready .pad {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.export-ready strong {
+  position: relative;
+  z-index: 1;
+  display: block;
+  font-size: 20px;
+  line-height: 1.2;
+  color: white;
+}
+
+.export-ready p {
+  position: relative;
+  z-index: 1;
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.72);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.export-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.export-quality {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border-radius: 18px;
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
+}
+
+.export-quality h4 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.export-quality .question {
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(15, 15, 22, 0.08);
+  font-size: 12px;
+  color: var(--indigo);
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+/* ===== Error toast ===== */
+.error-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 78px;
+  transform: translateX(-50%);
+  z-index: 40;
+  max-width: 480px;
+  padding: 12px 18px;
+  border-radius: 14px;
+  background: rgba(244, 63, 94, 0.95);
+  color: white;
+  font-size: 12.5px;
+  font-weight: 600;
+  box-shadow: 0 18px 30px -10px rgba(244, 63, 94, 0.6);
+  backdrop-filter: blur(16px);
+  animation: slideEnter 0.4s ease both;
+}
+
+/* Utilities */

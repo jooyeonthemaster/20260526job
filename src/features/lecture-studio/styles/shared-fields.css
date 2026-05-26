@@ -1,0 +1,47 @@
+/* Shared input and textarea field styles. */
+.field-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.field-block label {
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--slate);
+  text-transform: uppercase;
+}
+
+.field-block input,
+.field-block textarea,
+.field-block select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--glass-border);
+  color: var(--ink);
+  font-size: 14.5px;
+  line-height: 1.5;
+  resize: vertical;
+  transition: border 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+  font-family: inherit;
+}
+
+.field-block input:focus,
+.field-block textarea:focus,
+.field-block select:focus {
+  border-color: rgba(15, 15, 22, 0.4);
+  background: white;
+  box-shadow: 0 0 0 4px rgba(15, 15, 22, 0.12);
+}
+
+.field-block textarea {
+  min-height: 64px;
+  font-family: inherit;
+}
+
+/* ===== Slide 8 — Profile input ===== */

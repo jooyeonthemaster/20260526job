@@ -1,0 +1,156 @@
+/* Talent slide card design. */
+.talent-slide {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 12px;
+  height: 100%;
+}
+
+/* ===== Slide 5 — Talent matrix ===== */
+.talent-layout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, auto);
+  gap: 12px;
+  min-height: 0;
+  align-content: start;
+}
+
+.talent-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  border-radius: 18px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  overflow: hidden;
+  transition: transform 0.25s ease;
+  cursor: default;
+}
+
+.talent-card:hover {
+  transform: translateY(-3px) scale(1.01);
+}
+
+.talent-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -30%;
+  width: 80%;
+  height: 120%;
+  background: radial-gradient(circle, var(--accent), transparent 70%);
+  opacity: 0.16;
+  filter: blur(10px);
+}
+
+.talent-head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.talent-head h4 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.talent-head small {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.talent-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.talent-keywords {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 0;
+}
+
+.talent-keywords span {
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 700;
+  background: color-mix(in srgb, var(--accent) 10%, white);
+  color: color-mix(in srgb, var(--accent) 85%, black);
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.talent-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.64);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  position: relative;
+  z-index: 1;
+}
+
+.talent-section span {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.talent-section strong {
+  font-size: 13px;
+  color: var(--accent, var(--indigo));
+}
+
+.talent-proof {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.44);
+  border: 1px dashed color-mix(in srgb, var(--accent) 28%, transparent);
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  word-break: keep-all;
+}
+
+.talent-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 13px 18px;
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.92);
+  color: white;
+}
+
+.talent-flow span {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+/* ===== Slide 6 — Writing rules ===== */

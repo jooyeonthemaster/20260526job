@@ -1,0 +1,94 @@
+/* Design tokens, fonts, and document base styles. */
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap");
+
+:root {
+  /* === Tech × Byredo monochrome palette === */
+  --ink: #0a0a12;
+  --ink-soft: rgba(15, 15, 22, 0.78);
+  --slate: rgba(15, 15, 22, 0.62);
+  --mute: rgba(15, 15, 22, 0.45);
+  --line: rgba(15, 15, 22, 0.08);
+  --line-strong: rgba(15, 15, 22, 0.16);
+  --paper: #e3e3e3;
+  --canvas: #e3e3e3;
+
+  /* Legacy color tokens — neutralized to grayscale for un-refactored slides */
+  --indigo: #1a1a22;
+  --violet: #2a2a32;
+  --pink: #3a3a42;
+  --cyan: #4a4a52;
+  --emerald: #1a1a22;
+  --amber: #2a2a32;
+  --rose: #3a3a42;
+
+  --glass-bg: rgba(250, 249, 246, 0.6);
+  --glass-bg-strong: rgba(250, 249, 246, 0.82);
+  --glass-border: rgba(15, 15, 22, 0.08);
+  --glass-shadow: 0 28px 60px -28px rgba(15, 15, 22, 0.18),
+    0 8px 24px -16px rgba(15, 15, 22, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
+  --display: "Instrument Serif", var(--font-pretendard, "Pretendard"), serif;
+  --sans: var(--font-pretendard, "Pretendard"), "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--canvas);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  overflow: hidden;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  letter-spacing: 0;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(15, 15, 22, 0.16);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 15, 22, 0.36);
+}
+
+/* ===== Stage backdrop — mesh aurora on white ===== */

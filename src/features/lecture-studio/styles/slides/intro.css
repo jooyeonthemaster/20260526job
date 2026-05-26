@@ -1,0 +1,657 @@
+/* Intro slide design. */
+.intro-layout {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: clamp(32px, 4.5vw, 68px);
+  height: 100%;
+  min-height: 0;
+  align-items: center;
+}
+
+.intro-copy {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2vh, 24px);
+  min-width: 0;
+}
+
+.intro-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px 6px 6px;
+  width: fit-content;
+  border-radius: 999px;
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+  box-shadow: 0 4px 12px rgba(15, 15, 22, 0.05);
+}
+
+.intro-mark .pill {
+  display: inline-grid;
+  place-items: center;
+  height: 24px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--indigo), var(--violet) 60%, var(--pink));
+  color: white;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.intro-title {
+  margin: 0;
+  font-size: clamp(40px, 4.2vw, 64px);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.intro-title .accent {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 45%, #0a0a12 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 900;
+}
+
+.intro-title em {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--violet);
+  position: relative;
+  display: inline-block;
+  padding-right: 4px;
+}
+
+.intro-tagline {
+  margin: 0 0 clamp(20px, 3vh, 36px);
+  max-width: 680px;
+  color: rgba(15, 23, 42, 0.65);
+  font-size: clamp(16px, 1.1vw, 20px);
+  line-height: 1.6;
+  font-weight: 500;
+  word-break: keep-all;
+}
+
+.intro-outcomes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.intro-outcomes .outcome-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 26px 24px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  box-shadow: 0 10px 30px -15px rgba(63, 64, 138, 0.12),
+              inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: all 0.32s cubic-bezier(0.25, 1, 0.5, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.intro-outcomes .outcome-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: transparent;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  transition: background 0.32s ease;
+  pointer-events: none;
+}
+
+.intro-outcomes .outcome-card.c1:hover::before { background: linear-gradient(135deg, var(--indigo), transparent 60%); }
+.intro-outcomes .outcome-card.c2:hover::before { background: linear-gradient(135deg, var(--violet), transparent 60%); }
+.intro-outcomes .outcome-card.c3:hover::before { background: linear-gradient(135deg, var(--pink), transparent 60%); }
+
+.intro-outcomes .outcome-card.c1 { background: rgba(15, 15, 22, 0.02); border-color: rgba(15, 15, 22, 0.08); }
+.intro-outcomes .outcome-card.c2 { background: rgba(15, 15, 22, 0.02); border-color: rgba(15, 15, 22, 0.08); }
+.intro-outcomes .outcome-card.c3 { background: rgba(15, 15, 22, 0.02); border-color: rgba(15, 15, 22, 0.08); }
+
+.intro-outcomes .outcome-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  background: white;
+}
+
+.intro-outcomes .outcome-card.c1:hover { box-shadow: 0 20px 40px -15px rgba(15, 15, 22, 0.22); border-color: rgba(15, 15, 22, 0.25); }
+.intro-outcomes .outcome-card.c2:hover { box-shadow: 0 20px 40px -15px rgba(15, 15, 22, 0.22); border-color: rgba(15, 15, 22, 0.25); }
+.intro-outcomes .outcome-card.c3:hover { box-shadow: 0 20px 40px -15px rgba(15, 15, 22, 0.22); border-color: rgba(15, 15, 22, 0.25); }
+
+.card-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.intro-outcomes .outcome-badge {
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+.outcome-card.c1 .outcome-badge { color: var(--indigo); }
+.outcome-card.c2 .outcome-badge { color: var(--violet); }
+.outcome-card.c3 .outcome-badge { color: var(--pink); }
+
+.outcome-icon {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+.outcome-card.c1 .outcome-icon { background: rgba(15, 15, 22, 0.08); color: var(--indigo); }
+.outcome-card.c2 .outcome-icon { background: rgba(15, 15, 22, 0.08); color: var(--violet); }
+.outcome-card.c3 .outcome-icon { background: rgba(15, 15, 22, 0.08); color: var(--pink); }
+
+.outcome-card:hover .outcome-icon {
+  transform: rotate(-10deg) scale(1.1);
+}
+.outcome-card.c1:hover .outcome-icon { background: var(--indigo); color: white; box-shadow: 0 6px 12px rgba(15, 15, 22, 0.3); }
+.outcome-card.c2:hover .outcome-icon { background: var(--violet); color: white; box-shadow: 0 6px 12px rgba(15, 15, 22, 0.3); }
+.outcome-card.c3:hover .outcome-icon { background: var(--pink); color: white; box-shadow: 0 6px 12px rgba(15, 15, 22, 0.3); }
+
+.intro-outcomes strong {
+  font-size: clamp(19px, 1.3vw, 23px);
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+.intro-outcomes p {
+  margin: 0;
+  font-size: clamp(13.8px, 0.95vw, 15px);
+  line-height: 1.65;
+  color: var(--ink-soft);
+  word-break: keep-all;
+}
+
+/* Intro visual mockup (Isometric 3D) */
+.intro-visual {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  overflow: visible;
+  perspective: 1600px;
+}
+
+.spline-fallback {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--paper) 0%, #d8d8de 100%);
+}
+
+/* ===== Persistent Spline robot layer — mounted once, repositions per slide ===== */
+.spline-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  background: var(--paper);
+  transition: opacity 760ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity;
+}
+
+.spline-layer__stage {
+  width: 100%;
+  height: 100%;
+  transform-origin: 100% 50%;
+  transform: scale(0.5) translateX(60%);
+  transition: transform 920ms cubic-bezier(0.65, 0, 0.35, 1);
+  will-change: transform;
+}
+
+.spline-layer__stage > div,
+.spline-layer__stage canvas,
+.spline-layer canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Slide 00 — full-bleed cover */
+.spline-layer--cover {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.spline-layer--cover .spline-layer__stage {
+  transform-origin: 50% 50%;
+  transform: scale(1) translateX(0);
+}
+
+/* Slide 01+ — robot follows along, anchored top-right above content lines */
+.spline-layer--companion {
+  opacity: 1;
+  pointer-events: auto;
+  clip-path: inset(0 0 calc(100% - var(--spline-companion-cut, 58vh)) 0);
+}
+
+.spline-layer--companion .spline-layer__stage {
+  transform-origin: 100% 0%;
+  transform: scale(0.55) translate(9%, 14%);
+}
+
+/* Slide 02 — Presenter: portrait-aspect canvas forces Spline auto-zoom
+   to reframe the full robot (head → feet) on the right side */
+.spline-layer--presenter {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.spline-layer--presenter .spline-layer__stage {
+  width: 54%;
+  height: 100%;
+  margin-left: 46%;
+  transform: none;
+  transform-origin: center center;
+}
+
+/* Slide 03 — small framework marker in the header whitespace */
+.spline-layer--map-mini {
+  opacity: 1;
+  pointer-events: none;
+  background: transparent;
+}
+
+.spline-layer--map-mini .spline-layer__stage {
+  transform-origin: 100% 0%;
+  transform: scale(0.2) translate(-50%, 42%);
+}
+
+/* Slide 04 - writing assistant in the header whitespace */
+.spline-layer--writing-mini {
+  opacity: 1;
+  pointer-events: auto;
+  background: transparent;
+}
+
+.spline-layer--writing-mini .spline-layer__stage {
+  transform-origin: 100% 0%;
+  transform: scale(0.21) translate(-48%, 24%);
+}
+
+/* Slide 05 - profile assistant in the header whitespace */
+.spline-layer--profile-input-mini {
+  opacity: 1;
+  pointer-events: auto;
+  background: transparent;
+}
+
+.spline-layer--profile-input-mini .spline-layer__stage {
+  transform-origin: 100% 0%;
+  transform: scale(0.2) translate(-48%, 31%);
+}
+
+/* Slide 06 - STAR story assistant in the header whitespace */
+.spline-layer--story-mini {
+  opacity: 1;
+  pointer-events: auto;
+  background: transparent;
+}
+
+.spline-layer--story-mini .spline-layer__stage {
+  transform-origin: 100% 0%;
+  transform: scale(0.2) translate(-48%, 30%);
+}
+
+/* Hidden state — robot rests off-screen top-right */
+.spline-layer--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.spline-layer--hidden .spline-layer__stage {
+  transform-origin: 100% 0%;
+  transform: scale(0.4) translateY(-30%);
+}
+
+/* Restore pointer-events passthrough on intro so clicks reach the robot
+   (the whole deck chain becomes transparent to pointer events) */
+.deck-layout--passthrough,
+.deck-layout--passthrough .slide-frame,
+.deck-layout--passthrough .slide-surface,
+.deck-layout--passthrough .slide-body,
+.deck-layout--passthrough .intro-hero,
+.deck-layout--passthrough .intro-hero__veil,
+.deck-layout--passthrough .intro-hero__overlay {
+  pointer-events: none;
+}
+
+.deck-layout--passthrough .intro-hero__overlay > * {
+  pointer-events: auto;
+}
+
+.deck-layout--form-robot .slide-body,
+.deck-layout--form-robot .slide-body * {
+  pointer-events: auto;
+}
+
+/* ------- Intro hero (cover slide) ------- */
+.slide-surface--intro {
+  padding: 0 !important;
+  grid-template-rows: 1fr !important;
+  background: transparent;
+}
+
+.slide-surface--intro .slide-head {
+  display: none;
+}
+
+.slide-surface--intro .slide-body {
+  padding: 0;
+  overflow: hidden;
+}
+
+.intro-hero {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  background: transparent;
+  isolation: isolate;
+}
+
+.intro-hero__veil {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(227, 227, 227, 0.92) 0%,
+      rgba(227, 227, 227, 0.78) 22%,
+      rgba(227, 227, 227, 0.35) 42%,
+      rgba(227, 227, 227, 0) 58%
+    ),
+    radial-gradient(
+      ellipse at 18% 100%,
+      rgba(10, 10, 18, 0.08) 0%,
+      transparent 60%
+    );
+}
+
+.intro-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: clamp(56px, 7vw, 120px);
+  gap: clamp(20px, 2.2vw, 36px);
+  pointer-events: none;
+}
+
+.intro-hero__overlay > * {
+  pointer-events: auto;
+}
+
+.intro-hero__eyebrow {
+  font-family: var(--mono);
+  font-size: clamp(10.5px, 0.8vw, 12.5px);
+  font-weight: 600;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: rgba(15, 15, 22, 0.55);
+  padding: 8px 14px;
+  border: 1px solid rgba(15, 15, 22, 0.18);
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.intro-hero__title {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: clamp(52px, 7.2vw, 116px);
+  line-height: 1;
+  letter-spacing: -0.045em;
+  font-weight: 800;
+  color: #0a0a12;
+  word-break: keep-all;
+  max-width: 70%;
+}
+
+.intro-hero__title br + * {
+  display: inline;
+}
+
+.intro-hero__byline {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: clamp(14px, 1.1vw, 18px);
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  color: rgba(15, 15, 22, 0.62);
+}
+
+.doc-stack {
+  position: relative;
+  width: min(100%, 390px);
+  height: min(100%, 540px);
+  max-height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.doc-paper {
+  position: absolute;
+  inset: 0;
+  border-radius: 26px;
+  background: linear-gradient(135deg, #ffffff 0%, #fafbff 100%);
+  box-shadow: 0 35px 70px -25px rgba(15, 23, 42, 0.32),
+              0 10px 24px -10px rgba(15, 15, 22, 0.12),
+              inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--glass-border);
+  overflow: hidden;
+  padding: 30px 26px;
+  transform-style: preserve-3d;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.5s ease;
+  transform: rotateY(-18deg) rotateX(14deg) rotateZ(4deg) translate3d(0, 0, 40px);
+}
+
+.doc-paper.back,
+.doc-paper.deeper {
+  display: block;
+}
+
+.doc-paper.back {
+  background: linear-gradient(140deg, rgba(15, 15, 22, 0.12), rgba(15, 15, 22, 0.08));
+  border: 1px solid rgba(15, 15, 22, 0.16);
+  transform: rotateY(-18deg) rotateX(14deg) rotateZ(4deg) translate3d(24px, 14px, 10px);
+  opacity: 0.85;
+  box-shadow: 0 20px 45px -20px rgba(15, 23, 42, 0.22);
+}
+
+.doc-paper.deeper {
+  background: linear-gradient(140deg, rgba(15, 15, 22, 0.1), rgba(15, 15, 22, 0.08));
+  border: 1px solid rgba(15, 15, 22, 0.14);
+  transform: rotateY(-18deg) rotateX(14deg) rotateZ(4deg) translate3d(48px, 28px, -20px);
+  opacity: 0.65;
+  box-shadow: 0 12px 30px -15px rgba(15, 23, 42, 0.18);
+}
+
+.doc-title {
+  font-family: var(--sans);
+  font-size: 21px;
+  font-weight: 800;
+  color: var(--ink);
+  text-align: left;
+  letter-spacing: -0.02em;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 10px;
+}
+
+.doc-line {
+  height: 6px;
+  margin-top: 6px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.05);
+}
+
+.doc-line.short { width: 50%; }
+.doc-line.mid { width: 75%; }
+.doc-line.tall {
+  height: 20px;
+  background: linear-gradient(90deg, rgba(15, 15, 22, 0.12) 0%, rgba(15, 15, 22, 0.12) 100%);
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+.doc-section {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(15, 23, 42, 0.08);
+}
+
+.doc-section h5 {
+  margin: 0 0 6px;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--indigo);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.doc-section h5::before {
+  content: "";
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--pink);
+}
+
+/* Float badges with organic float movements */
+.float-badge {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 20px 40px -15px rgba(63, 64, 138, 0.28),
+              inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  transform-style: preserve-3d;
+  z-index: 10;
+}
+
+.float-badge:hover {
+  transform: translate3d(0, 0, 50px) scale(1.08);
+  background: white;
+  border-color: rgba(15, 15, 22, 0.3);
+  color: var(--ink);
+}
+
+.float-badge.tl {
+  top: -2%;
+  left: -8%;
+  animation: float1 6s ease-in-out infinite;
+}
+
+.float-badge.ml {
+  top: 48%;
+  left: -14%;
+  animation: float2 5.2s ease-in-out infinite;
+}
+
+.float-badge.br {
+  bottom: 8%;
+  right: -8%;
+  background: linear-gradient(135deg, #0a0a12 0%, #0a0a12 100%);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 45px -15px rgba(15, 15, 22, 0.45),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  animation: float3 7s ease-in-out infinite;
+}
+
+.float-badge.br:hover {
+  transform: translate3d(0, 0, 60px) scale(1.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 28px 55px -12px rgba(15, 15, 22, 0.6);
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translateY(0) rotate(-1deg) translateZ(50px); }
+  50% { transform: translateY(-12px) rotate(1.5deg) translateZ(55px); }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translateY(-50%) rotate(1deg) translateZ(45px); }
+  50% { transform: translateY(calc(-50% - 10px)) rotate(-1.5deg) translateZ(52px); }
+}
+
+@keyframes float3 {
+  0%, 100% { transform: translateY(0) rotate(1.5deg) translateZ(55px); }
+  50% { transform: translateY(-14px) rotate(-1deg) translateZ(62px); }
+}
+
+.float-badge .badge-icon {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  background: rgba(15, 15, 22, 0.08);
+  color: var(--indigo);
+  transition: transform 0.3s ease;
+}
+
+.float-badge.br .badge-icon {
+  background: rgba(255, 255, 255, 0.16);
+  color: white;
+}
+
+.float-badge:hover .badge-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.float-badge.br:hover .badge-icon {
+  color: #c7d2fe;
+}
+
+/* ===== Slide 1 — Instructor ===== */

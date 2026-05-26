@@ -1,0 +1,431 @@
+/* ============================================================
+   Slide — AI Studio (Generator) — Tech × Byredo
+   Spline stage (left, dominant) + summary/checks (right rail)
+   ============================================================ */
+
+.genform {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.85fr);
+  gap: clamp(14px, 1.4vw, 22px);
+  height: 100%;
+  min-height: 0;
+  font-family: "Pretendard", system-ui, -apple-system, "Apple SD Gothic Neo",
+    "Noto Sans KR", sans-serif;
+  font-feature-settings: "ss01", "ss02", "calt";
+  color: var(--ink);
+}
+
+/* ===== left stage — copy + CTA filling full panel ===== */
+.genform__stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: clamp(28px, 2.6vw, 44px) clamp(28px, 2.6vw, 44px)
+    clamp(28px, 2.4vw, 40px);
+  background: #fafafa;
+  border: 1px solid rgba(15, 15, 22, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 16px 40px -28px rgba(15, 15, 22, 0.25);
+}
+
+.genform__stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(80% 50% at 100% 0%, rgba(15, 15, 22, 0.045), transparent 60%),
+    radial-gradient(60% 50% at 0% 100%, rgba(15, 15, 22, 0.04), transparent 60%);
+  pointer-events: none;
+}
+
+.genform__copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 1.3vw, 20px);
+  width: 100%;
+  height: 100%;
+}
+
+.genform__copy > .genform__sub {
+  margin-bottom: auto;
+}
+
+.genform__eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  color: rgba(15, 15, 22, 0.55);
+  text-transform: uppercase;
+}
+
+.genform__title {
+  margin: 0;
+  font-size: clamp(26px, 2.6vw, 38px);
+  font-weight: 700;
+  letter-spacing: -0.022em;
+  line-height: 1.16;
+  color: var(--ink);
+  word-break: keep-all;
+}
+
+.genform__sub {
+  margin: 0;
+  font-size: clamp(13.5px, 1.05vw, 15px);
+  line-height: 1.65;
+  color: rgba(15, 15, 22, 0.62);
+  letter-spacing: -0.005em;
+  max-width: 56ch;
+}
+
+/* ===== CTA row ===== */
+.genform__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.genform__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  font-family: "Pretendard", system-ui, sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: -0.008em;
+  color: #fafafa;
+  background: #0a0a12;
+  border: 1px solid #0a0a12;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.16s ease, transform 0.16s ease, box-shadow 0.16s ease;
+  box-shadow: 0 10px 22px -10px rgba(15, 15, 22, 0.7);
+}
+
+.genform__cta:hover:not(:disabled) {
+  background: #1c1c2a;
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px -10px rgba(15, 15, 22, 0.7);
+}
+
+.genform__cta:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.genform__cta.is-busy {
+  background: #1c1c2a;
+}
+
+.genform__ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  font-family: "Pretendard", system-ui, sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  color: rgba(15, 15, 22, 0.7);
+  background: #fff;
+  border: 1px solid rgba(15, 15, 22, 0.16);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+}
+
+.genform__ghost:hover:not(:disabled) {
+  background: rgba(15, 15, 22, 0.05);
+  border-color: rgba(15, 15, 22, 0.32);
+  color: var(--ink);
+}
+
+.genform__ghost:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.genform__spin {
+  animation: genformSpin 0.9s linear infinite;
+}
+
+@keyframes genformSpin {
+  to { transform: rotate(360deg); }
+}
+
+.genform__warn {
+  margin: 0;
+  padding: 8px 12px;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: #7a5500;
+  background: rgba(253, 194, 16, 0.1);
+  border: 1px solid rgba(253, 194, 16, 0.35);
+  border-radius: 4px;
+  letter-spacing: -0.003em;
+}
+
+.genform__warn strong {
+  font-weight: 800;
+}
+
+/* ===== right panel — summary / sections / checks ===== */
+.genform__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: clamp(16px, 1.4vw, 22px);
+  background: #fafafa;
+  border: 1px solid rgba(15, 15, 22, 0.1);
+  border-radius: 6px;
+  overflow-y: auto;
+  min-height: 0;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 14px 32px -28px rgba(15, 15, 22, 0.22);
+}
+
+.genform__panel::-webkit-scrollbar {
+  width: 6px;
+}
+.genform__panel::-webkit-scrollbar-thumb {
+  background: rgba(15, 15, 22, 0.18);
+  border-radius: 3px;
+}
+
+.genform__panel-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 8px;
+  margin-bottom: -4px;
+  border-bottom: 1px solid rgba(15, 15, 22, 0.08);
+}
+
+.genform__panel-head + .genform__panel-head {
+  margin-top: 8px;
+}
+
+.genform__panel-num {
+  display: inline-grid;
+  place-items: center;
+  height: 20px;
+  min-width: 26px;
+  padding: 0 6px;
+  font-family: "Pretendard", system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  color: #fafafa;
+  background: #0a0a12;
+  border-radius: 2px;
+  font-variant-numeric: tabular-nums;
+}
+
+.genform__panel-title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.008em;
+  color: var(--ink);
+}
+
+.genform__panel-meta {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(15, 15, 22, 0.5);
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* summary cells */
+.genform__summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.genform__sumcell {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 9px 11px;
+  background: #fff;
+  border: 1px solid rgba(15, 15, 22, 0.08);
+  border-radius: 4px;
+}
+
+.genform__sumcell span {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(15, 15, 22, 0.45);
+  text-transform: uppercase;
+}
+
+.genform__sumcell strong {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.008em;
+  color: var(--ink);
+  line-height: 1.35;
+  word-break: keep-all;
+}
+
+/* section preview rows */
+.genform__sections {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.genform__sec {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 9px 11px;
+  background: #fff;
+  border: 1px solid rgba(15, 15, 22, 0.08);
+  border-radius: 4px;
+}
+
+.genform__sec-num {
+  display: inline-grid;
+  place-items: center;
+  height: 18px;
+  min-width: 22px;
+  padding: 0 5px;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  color: rgba(15, 15, 22, 0.7);
+  background: rgba(15, 15, 22, 0.06);
+  border-radius: 2px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.genform__sec-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.genform__sec-body strong {
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: -0.008em;
+  color: var(--ink);
+}
+
+.genform__sec-body span {
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: rgba(15, 15, 22, 0.6);
+  letter-spacing: -0.003em;
+}
+
+/* quality box */
+.genform__quality {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 14px;
+  background: #0a0a12;
+  border-radius: 5px;
+  color: #fafafa;
+}
+
+.genform__quality strong {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.008em;
+}
+
+.genform__quality p {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.72);
+  letter-spacing: -0.003em;
+}
+
+.genform__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 2px;
+}
+
+.genform__chips span {
+  padding: 3px 9px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fafafa;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+}
+
+/* check list */
+.genform__checks {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.genform__check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 11px;
+  background: #fff;
+  border: 1px solid rgba(15, 15, 22, 0.08);
+  border-radius: 4px;
+}
+
+.genform__check-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(15, 15, 22, 0.18);
+  flex-shrink: 0;
+}
+
+.genform__check.is-done .genform__check-dot {
+  background: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.18);
+}
+
+.genform__check-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+
+.genform__check-icon {
+  margin-left: auto;
+  color: #16a34a;
+  flex-shrink: 0;
+}

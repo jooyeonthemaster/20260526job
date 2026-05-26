@@ -1,0 +1,143 @@
+/* Section map slide overview design. */
+.map-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 12px;
+  height: 100%;
+  align-content: start;
+  align-items: stretch;
+}
+
+.category-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px;
+  border-radius: 18px;
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 18px 40px -28px rgba(63, 64, 138, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 26px 50px -28px rgba(63, 64, 138, 0.5);
+}
+
+.category-card::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: var(--accent, var(--indigo));
+}
+
+.category-number {
+  font-family: var(--display);
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--accent, var(--indigo));
+}
+
+.category-card h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.category-card .target {
+  display: inline-flex;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  background: rgba(15, 23, 42, 0.05);
+  color: var(--ink-soft);
+  align-self: flex-start;
+}
+
+.category-card p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--slate);
+  line-height: 1.5;
+}
+
+.category-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.category-body p {
+  padding: 9px 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+}
+
+.category-body strong {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--accent, var(--indigo));
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.category-card .formula-mini {
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}
+
+.category-card .formula-mini span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--slate);
+  line-height: 1.45;
+}
+
+.category-card .formula-mini span::before {
+  content: "→";
+  color: var(--accent, var(--indigo));
+}
+
+.category-output {
+  margin-top: auto;
+  padding: 11px 12px;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--accent, var(--indigo)) 10%, white);
+  border: 1px solid color-mix(in srgb, var(--accent, var(--indigo)) 22%, transparent);
+}
+
+.category-output span {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent, var(--indigo));
+}
+
+.category-output strong {
+  display: block;
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--ink);
+  word-break: keep-all;
+}
+
+/* ===== Slide 4 — Process ===== */

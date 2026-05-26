@@ -1,0 +1,518 @@
+/* ============================================================
+   Slide 06 — Story (STAR) — Tech × Byredo
+   Top guide strip + full-width story cards.
+   ============================================================ */
+
+.sform {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 1.3vw, 20px);
+  height: 100%;
+  min-height: 0;
+  font-family: "Pretendard", system-ui, -apple-system, "Apple SD Gothic Neo",
+    "Noto Sans KR", sans-serif;
+  font-feature-settings: "ss01", "ss02", "calt";
+  color: var(--ink);
+}
+
+/* ===== topbar — example notice + clear-all ===== */
+.sform__topbar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 11px 14px 11px 12px;
+  background: #fff;
+  border: 1px solid rgba(15, 15, 22, 0.1);
+  border-radius: 5px;
+}
+
+.sform__topbar-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.sform__topbar-tag {
+  display: inline-grid;
+  place-items: center;
+  height: 18px;
+  padding: 0 7px;
+  font-family: "Pretendard", system-ui, sans-serif;
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  color: #fafafa;
+  background: #0a0a12;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.sform__topbar-text p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(15, 15, 22, 0.65);
+  letter-spacing: -0.003em;
+}
+
+.sform__topbar-clear {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 13px;
+  font-family: "Pretendard", system-ui, sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  color: rgba(15, 15, 22, 0.7);
+  background: #fff;
+  border: 1px solid rgba(15, 15, 22, 0.16);
+  border-radius: 999px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.16s ease, color 0.16s ease, border-color 0.16s ease,
+    transform 0.16s ease;
+}
+
+.sform__topbar-clear:hover:not(:disabled) {
+  background: #dc2626;
+  border-color: #dc2626;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.sform__topbar-clear:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ===== top guide strip ===== */
+.sform__guide {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: clamp(13px, 1.1vw, 17px) clamp(16px, 1.4vw, 22px);
+  background: #fafafa;
+  border: 1px solid rgba(15, 15, 22, 0.1);
+  border-radius: 6px;
+}
+
+.sform__guide-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sform__guide-num {
+  display: inline-grid;
+  place-items: center;
+  height: 22px;
+  min-width: 28px;
+  padding: 0 7px;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  color: #fafafa;
+  background: #0a0a12;
+  border-radius: 2px;
+  font-variant-numeric: tabular-nums;
+}
+
+.sform__guide-title {
+  margin: 0;
+  font-size: clamp(14px, 1.15vw, 16px);
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+}
+
+.sform__guide-meta {
+  margin-left: auto;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(15, 15, 22, 0.48);
+  letter-spacing: -0.003em;
+}
+
+.sform__steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.sform__step {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  background: #fff;
+  border: 1px solid rgba(15, 15, 22, 0.1);
+  border-radius: 4px;
+  transition: border-color 0.16s ease, transform 0.16s ease;
+}
+
+.sform__step:hover {
+  border-color: rgba(15, 15, 22, 0.32);
+  transform: translateY(-1px);
+}
+
+.sform__step-letter {
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #fafafa;
+  background: #0a0a12;
+  border-radius: 4px;
+  flex-shrink: 0;
+  letter-spacing: 0;
+  font-family: "Pretendard", system-ui, sans-serif;
+}
+
+.sform__step-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.sform__step-text strong {
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+
+.sform__step-text span {
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: rgba(15, 15, 22, 0.62);
+  letter-spacing: -0.003em;
+}
+
+/* ===== list head ===== */
+.sform__listhead {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 14px;
+  padding: 0 4px;
+}
+
+.sform__listtitle {
+  margin: 0;
+  font-size: clamp(14px, 1.15vw, 16px);
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+}
+
+.sform__listtitle span {
+  color: rgba(15, 15, 22, 0.4);
+  font-weight: 600;
+}
+
+.sform__listsub {
+  margin: 0;
+  font-size: 11.5px;
+  color: rgba(15, 15, 22, 0.55);
+  letter-spacing: -0.003em;
+}
+
+.sform__add {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  font-family: "Pretendard", system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  color: #fafafa;
+  background: #0a0a12;
+  border: 1px solid #0a0a12;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.16s ease, background 0.16s ease, box-shadow 0.16s ease;
+  box-shadow: 0 6px 16px -10px rgba(15, 15, 22, 0.6);
+}
+
+.sform__add:hover {
+  background: #1c1c2a;
+  transform: translateY(-1px);
+}
+
+/* ===== story cards list ===== */
+.sform__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 2px 4px 2px 0;
+}
+
+.sform__list::-webkit-scrollbar {
+  width: 6px;
+}
+.sform__list::-webkit-scrollbar-thumb {
+  background: rgba(15, 15, 22, 0.18);
+  border-radius: 3px;
+}
+
+.scard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: clamp(14px, 1.25vw, 18px) clamp(16px, 1.4vw, 22px);
+  background: #fafafa;
+  border: 1px solid rgba(15, 15, 22, 0.1);
+  border-radius: 6px;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 14px 32px -28px rgba(15, 15, 22, 0.22);
+  transition: border-color 0.18s ease;
+}
+
+.scard:focus-within {
+  border-color: rgba(15, 15, 22, 0.34);
+}
+
+.scard__head {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(15, 15, 22, 0.08);
+}
+
+.scard__num {
+  display: inline-grid;
+  place-items: center;
+  height: 24px;
+  min-width: 30px;
+  padding: 0 8px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  color: #fafafa;
+  background: #0a0a12;
+  border-radius: 2px;
+  font-variant-numeric: tabular-nums;
+}
+
+.scard__title {
+  width: 100%;
+  padding: 8px 12px;
+  font-family: "Pretendard", system-ui, sans-serif;
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: -0.008em;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid rgba(15, 15, 22, 0.14);
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.scard__title:focus {
+  border-color: rgba(15, 15, 22, 0.55);
+  box-shadow: 0 0 0 3px rgba(15, 15, 22, 0.06);
+}
+
+.scard__title::placeholder {
+  color: rgba(15, 15, 22, 0.32);
+  font-weight: 400;
+}
+
+.scard__cat-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px 6px 10px;
+  background: #fff;
+  border: 1px solid rgba(15, 15, 22, 0.14);
+  border-radius: 4px;
+}
+
+.scard__cat-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(15, 15, 22, 0.5);
+  text-transform: uppercase;
+}
+
+.scard__cat {
+  font-family: "Pretendard", system-ui, sans-serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding-right: 4px;
+}
+
+/* ===== STAR grid 2x2 ===== */
+.scard__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.scard__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.scard__field-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: "Pretendard", system-ui, sans-serif;
+}
+
+.scard__field-letter {
+  display: inline-grid;
+  place-items: center;
+  width: 19px;
+  height: 19px;
+  font-size: 10.5px;
+  font-weight: 800;
+  color: #fafafa;
+  background: #0a0a12;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.scard__field-letter--alt {
+  background: #fff;
+  color: #0a0a12;
+  border: 1px solid #0a0a12;
+}
+
+.scard__field-name {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+
+.scard__field-area {
+  width: 100%;
+  min-height: 56px;
+  padding: 10px 12px;
+  font-family: "Pretendard", system-ui, sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid rgba(15, 15, 22, 0.14);
+  border-radius: 4px;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.scard__field-area::placeholder {
+  color: rgba(15, 15, 22, 0.3);
+  font-size: 12.5px;
+  font-weight: 400;
+}
+
+.scard__field-area:focus {
+  border-color: rgba(15, 15, 22, 0.55);
+  box-shadow: 0 0 0 3px rgba(15, 15, 22, 0.06);
+}
+
+/* ===== insight / metric meta row ===== */
+.scard__meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.scard__metafield {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.scard__metainput {
+  width: 100%;
+  padding: 9px 12px;
+  font-family: "Pretendard", system-ui, sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid rgba(15, 15, 22, 0.14);
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.scard__metainput::placeholder {
+  color: rgba(15, 15, 22, 0.3);
+  font-size: 12.5px;
+  font-weight: 400;
+}
+
+.scard__metainput:focus {
+  border-color: rgba(15, 15, 22, 0.55);
+  box-shadow: 0 0 0 3px rgba(15, 15, 22, 0.06);
+}
+
+/* ===== delete button ===== */
+.scard__del {
+  align-self: flex-end;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  font-family: "Pretendard", system-ui, sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: -0.003em;
+  color: rgba(15, 15, 22, 0.55);
+  background: #fff;
+  border: 1px solid rgba(15, 15, 22, 0.1);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+}
+
+.scard__del:hover {
+  background: #dc2626;
+  border-color: #dc2626;
+  color: #fff;
+}
+
+/* ============================================================
+   Slide 07 — Keyword layout (legacy selector — keyword.css owns it)
+   ============================================================ */
+.keyword-layout {
+  display: grid;
+  grid-template-columns: 0.86fr 1.14fr;
+  gap: 18px;
+  height: 100%;
+  align-items: start;
+  align-content: start;
+}
