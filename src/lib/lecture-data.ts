@@ -654,6 +654,21 @@ export const lectureSlides: SlideMeta[] = [
     subtitle:
       "학원 양식 흐름에 맞춰 Word 문서로 내려받습니다. 즉시 편집·제출 가능한 형태.",
   },
+  {
+    id: "interview",
+    kicker: "10",
+    chapter: "Mock Interview",
+    title: "AI 면접관과 1:1 심층 면접",
+    subtitle:
+      "AI가 본인이 작성한 자기소개서를 근거로 심층 질문을 던지고, 답변마다 합격/감점 포인트를 즉시 피드백합니다.",
+  },
+  {
+    id: "job-fit",
+    kicker: "11",
+    chapter: "Career Fit Test",
+    title: "AI 직무 유형 테스트",
+    subtitle: "",
+  },
 ];
 
 export const instructor = {

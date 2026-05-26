@@ -22,5 +22,7 @@
 @import "../features/lecture-studio/styles/slides/generator.css";
 @import "../features/lecture-studio/styles/slides/review.css";
 @import "../features/lecture-studio/styles/slides/export.css";
+@import "../features/lecture-studio/styles/slides/interview.css";
+@import "../features/lecture-studio/styles/slides/job-fit.css";
 @import "../features/lecture-studio/styles/utilities.css";
 @import "../features/lecture-studio/styles/responsive.css";

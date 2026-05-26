@@ -14,3 +14,5 @@ export { PlannerSlide } from "./planner-slide";
 export { GeneratorSlide } from "./generator-slide";
 export { ReviewSlide } from "./review-slide";
 export { ExportSlide } from "./export-slide";
+export { InterviewSlide } from "./interview-slide";
+export { JobFitSlide } from "./job-fit-slide";

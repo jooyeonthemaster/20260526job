@@ -30,6 +30,8 @@ import {
   ExportSlide,
   GeneratorSlide,
   InstructorSlide,
+  InterviewSlide,
+  JobFitSlide,
   IntroSlide,
   MapSlide,
   ProfileInputSlide,
@@ -637,7 +639,9 @@ export function LectureStudio() {
                   <span>{slide.chapter}</span>
                 </span>
                 <h2>{slide.title}</h2>
-                <p className="head-sub">{slide.subtitle}</p>
+                {slide.subtitle ? (
+                  <p className="head-sub">{slide.subtitle}</p>
+                ) : null}
               </div>
               <div className="head-counter">
                 <span className="current">
@@ -790,6 +794,10 @@ export function LectureStudio() {
             callGemini={callGemini}
           />
         );
+      case "interview":
+        return <InterviewSlide payload={payload} />;
+      case "job-fit":
+        return <JobFitSlide payload={payload} />;
       default:
         return null;
     }
