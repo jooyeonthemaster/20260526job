@@ -786,6 +786,7 @@ export function LectureStudio() {
             qualityReport={qualityReport}
             busy={busy}
             downloadDocx={downloadDocx}
+            downloadHwpx={downloadHwpx}
             callGemini={callGemini}
           />
         );

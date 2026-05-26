@@ -480,7 +480,7 @@ def add_capture_page(doc, slide):
     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p.paragraph_format.space_after = Pt(0)
     run = p.add_run()
-    run.add_picture(str(img_path), width=Inches(11.25))
+    run.add_picture(str(img_path), width=Inches(10.8))
 
     doc.add_page_break()
 
