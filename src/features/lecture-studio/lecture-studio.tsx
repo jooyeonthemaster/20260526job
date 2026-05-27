@@ -45,6 +45,60 @@ import { mergeSections, parseDraftStream, splitTags } from "./utils";
 
 const storageKey = "cover-letter-lecture-studio-v4";
 
+type SplineMode =
+  | "cover"
+  | "companion"
+  | "presenter"
+  | "map-mini"
+  | "writing-mini"
+  | "profile-input-mini"
+  | "story-mini"
+  | "hidden";
+
+type IdleWindow = Window & {
+  requestIdleCallback?: (
+    callback: () => void,
+    options?: { timeout: number },
+  ) => number;
+  cancelIdleCallback?: (handle: number) => void;
+};
+
+function getSplineMode(slideId: string): SplineMode {
+  switch (slideId) {
+    case "intro":
+      return "cover";
+    case "profile":
+      return "companion";
+    case "why":
+      return "presenter";
+    case "map":
+      return "map-mini";
+    case "writing":
+      return "writing-mini";
+    case "profile-input":
+      return "profile-input-mini";
+    case "story":
+      return "story-mini";
+    default:
+      return "hidden";
+  }
+}
+
+function shouldDisableSplineByDefault() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("spline") === "1") return false;
+  if (params.get("spline") === "0" || params.get("lite") === "1") return true;
+
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+  const cores = navigator.hardwareConcurrency || 4;
+  const memory = (navigator as Navigator & { deviceMemory?: number })
+    .deviceMemory;
+
+  return prefersReducedMotion || cores <= 4 || (memory !== undefined && memory <= 4);
+}
+
 export function LectureStudio() {
   const shellRef = useRef<HTMLElement | null>(null);
   const [activeSlide, setActiveSlide] = useState(0);
@@ -89,16 +143,53 @@ export function LectureStudio() {
     }
   }, []);
 
-  useEffect(() => {
-    const snapshot = JSON.stringify({
+  const autosaveSnapshot = useMemo(
+    () => ({
       profile,
       stories,
       strengthsText,
       techText,
       sections,
-    });
-    window.localStorage.setItem(storageKey, snapshot);
-  }, [profile, stories, strengthsText, techText, sections]);
+    }),
+    [profile, stories, strengthsText, techText, sections],
+  );
+  const autosaveSnapshotRef = useRef(autosaveSnapshot);
+  autosaveSnapshotRef.current = autosaveSnapshot;
+
+  useEffect(() => {
+    const idleWindow = window as IdleWindow;
+    let idleHandle: number | null = null;
+    const timeoutHandle = window.setTimeout(() => {
+      const save = () => {
+        window.localStorage.setItem(
+          storageKey,
+          JSON.stringify(autosaveSnapshot),
+        );
+      };
+
+      if (idleWindow.requestIdleCallback) {
+        idleHandle = idleWindow.requestIdleCallback(save, { timeout: 1200 });
+      } else {
+        save();
+      }
+    }, 350);
+
+    return () => {
+      window.clearTimeout(timeoutHandle);
+      if (idleHandle !== null) idleWindow.cancelIdleCallback?.(idleHandle);
+    };
+  }, [autosaveSnapshot]);
+
+  useEffect(() => {
+    const flushAutosave = () => {
+      window.localStorage.setItem(
+        storageKey,
+        JSON.stringify(autosaveSnapshotRef.current),
+      );
+    };
+    window.addEventListener("pagehide", flushAutosave);
+    return () => window.removeEventListener("pagehide", flushAutosave);
+  }, []);
 
   // Ref so nav callbacks can read latest draft state without stale closures.
   const sectionsRef = useRef(sections);
@@ -288,15 +379,28 @@ export function LectureStudio() {
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
       let buffer = "";
+      let parseFrame: number | null = null;
+
+      const applyParsedDraft = () => {
+        parseFrame = null;
+        const parsed = parseDraftStream(buffer);
+        setSections(parsed.sections);
+        if (parsed.qualityReport) setQualityReport(parsed.qualityReport);
+      };
+
+      const scheduleParsedDraft = () => {
+        if (parseFrame !== null) return;
+        parseFrame = window.requestAnimationFrame(applyParsedDraft);
+      };
 
       while (true) {
         const { value, done } = await reader.read();
         if (done) break;
         buffer += decoder.decode(value, { stream: true });
-        const parsed = parseDraftStream(buffer);
-        setSections(parsed.sections);
-        if (parsed.qualityReport) setQualityReport(parsed.qualityReport);
+        scheduleParsedDraft();
       }
+      if (parseFrame !== null) window.cancelAnimationFrame(parseFrame);
+      applyParsedDraft();
       setStatus("AI 초안 생성 완료");
     } catch (e) {
       if ((e as { name?: string })?.name === "AbortError") {
@@ -472,6 +576,47 @@ export function LectureStudio() {
   };
 
   const slide = lectureSlides[activeSlide];
+  const splineMode = getSplineMode(slide.id);
+  const [splinePolicy, setSplinePolicy] = useState<
+    "pending" | "enabled" | "disabled"
+  >("pending");
+  const [splineReady, setSplineReady] = useState(false);
+
+  useEffect(() => {
+    setSplinePolicy(shouldDisableSplineByDefault() ? "disabled" : "enabled");
+  }, []);
+
+  useEffect(() => {
+    const idleWindow = window as IdleWindow;
+
+    if (splinePolicy !== "enabled" || splineMode === "hidden") {
+      setSplineReady(false);
+      return;
+    }
+
+    let cancelled = false;
+    let idleHandle: number | null = null;
+    let timeoutHandle: number | null = null;
+    const markReady = () => {
+      if (!cancelled) setSplineReady(true);
+    };
+
+    if (idleWindow.requestIdleCallback) {
+      idleHandle = idleWindow.requestIdleCallback(markReady, { timeout: 1400 });
+    } else {
+      timeoutHandle = window.setTimeout(markReady, 900);
+    }
+
+    return () => {
+      cancelled = true;
+      if (idleHandle !== null) idleWindow.cancelIdleCallback?.(idleHandle);
+      if (timeoutHandle !== null) window.clearTimeout(timeoutHandle);
+    };
+  }, [splineMode, splinePolicy]);
+
+  const shouldMountSpline = splinePolicy === "enabled" && splineReady;
+  const shouldRenderSplineLayer =
+    splineMode !== "hidden" && (shouldMountSpline || splinePolicy !== "enabled");
 
   useLayoutEffect(() => {
     const shell = shellRef.current;
@@ -532,12 +677,13 @@ export function LectureStudio() {
   }, [slide.id]);
 
   const isRobotInteractiveSlide =
-    slide.id === "intro" ||
-    slide.id === "profile" ||
-    slide.id === "why" ||
-    slide.id === "writing" ||
-    slide.id === "profile-input" ||
-    slide.id === "story";
+    shouldMountSpline &&
+    (slide.id === "intro" ||
+      slide.id === "profile" ||
+      slide.id === "why" ||
+      slide.id === "writing" ||
+      slide.id === "profile-input" ||
+      slide.id === "story");
 
   return (
     <main className="studio-shell" ref={shellRef}>
@@ -546,35 +692,23 @@ export function LectureStudio() {
       <div className="aurora-blob b2" />
       <div className="grid-veil" />
 
-      {/* Persistent Spline robot — loads once, repositions per slide */}
-      {(() => {
-        const splineMode =
-          slide.id === "intro"
-            ? "cover"
-            : slide.id === "profile"
-              ? "companion"
-              : slide.id === "why"
-                ? "presenter"
-                : slide.id === "map"
-                  ? "map-mini"
-                  : slide.id === "writing"
-                    ? "writing-mini"
-                    : slide.id === "profile-input"
-                      ? "profile-input-mini"
-                    : slide.id === "story"
-                      ? "story-mini"
-                : "hidden";
-        return (
-          <div
-            className={`spline-layer spline-layer--${splineMode}`}
-            aria-hidden={splineMode === "hidden"}
-          >
-            <div className="spline-layer__stage">
+      {/* Spline is gated on low-power devices because its WebGL scene is costly. */}
+      {shouldRenderSplineLayer && (
+        <div
+          className={`spline-layer spline-layer--${splineMode}${
+            shouldMountSpline ? "" : " spline-layer--static"
+          }`}
+          aria-hidden={!shouldMountSpline}
+        >
+          <div className="spline-layer__stage">
+            {shouldMountSpline ? (
               <SplineRobot />
-            </div>
+            ) : (
+              <div className="spline-static-fallback" aria-hidden />
+            )}
           </div>
-        );
-      })()}
+        </div>
+      )}
 
       <header className="topbar">
         <div className="topbar-left">

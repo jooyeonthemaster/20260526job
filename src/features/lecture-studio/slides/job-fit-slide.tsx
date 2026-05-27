@@ -203,6 +203,7 @@ export function JobFitSlide({ payload }: { payload: StudioPayload }) {
                       width={820}
                       height={512}
                       sizes="(max-width: 1100px) 80vw, 32vw"
+                      unoptimized
                     />
                   </span>
                   <span className="job-fit__choice-copy">

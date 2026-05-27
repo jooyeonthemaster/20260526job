@@ -143,7 +143,7 @@ export type JobFitReport = {
   model?: string;
 };
 
-const asset = (name: string) => `/job-fit/${name}.png`;
+const asset = (name: string) => `/job-fit/optimized/${name}.webp`;
 
 export const jobFitQuestions: JobFitQuestion[] = [
   {

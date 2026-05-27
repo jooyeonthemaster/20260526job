@@ -205,6 +205,15 @@
   background: linear-gradient(135deg, var(--paper) 0%, #d8d8de 100%);
 }
 
+.spline-static-fallback {
+  width: 100%;
+  height: 100%;
+  background-image: url("/assets/spline-robot-poster.webp");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
 /* ===== Persistent Spline robot layer — mounted once, repositions per slide ===== */
 .spline-layer {
   position: fixed;
@@ -238,6 +247,10 @@
 .spline-layer--cover {
   opacity: 1;
   pointer-events: auto;
+}
+
+.spline-layer--static {
+  pointer-events: none;
 }
 
 .spline-layer--cover .spline-layer__stage {
